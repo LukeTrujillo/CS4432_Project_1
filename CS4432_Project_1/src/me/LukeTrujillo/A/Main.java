@@ -58,15 +58,11 @@ public class Main {
 				}
 			}
 		}
-		System.out.println("done");
-
-		// setup the number of frames from the item
-
-		BufferPool manager = new BufferPool(3);
+		
+		BufferPool manager = new BufferPool(Integer.parseInt(args[1]));
 		
 		Scanner scanner = new Scanner(System.in); // get the text input
 
-		System.out.println("Ready for input");
 		while (true) {
 			try {
 				System.out.println();
@@ -99,6 +95,8 @@ public class Main {
 
 			} catch (NumberFormatException e) {
 				System.out.println("Invalid number argument given");
+			} catch(Exception e) {
+				System.out.println("An exception has occurred. Please try again.");
 			}
 		}
 		
