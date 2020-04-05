@@ -4,11 +4,14 @@ Section 1: how to compile
 
 	1. use cmd/terminal to navigate to the location of the source files
 	
-	2. use the command "java CS4432-Project1-lrtrujillo.java #" where  # is the number of frames to run
+	2. use the command "java -jar CS4432_Project1_lrtrujillo.jar #" where  # is the number of frames to run
 	
 	3. Wait for the "ready for input message" 
 	
 	4. Enter valid commands and testcases
+	
+	If you wish to compile the files. Please do "javac CS4432_Project1_lrtrujillo.java". This may be
+	different depending upon you system settings.
 	
 Section 2: Test Results
 

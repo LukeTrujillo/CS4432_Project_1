@@ -1,14 +1,12 @@
 
 
-import java.io.File;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Frame {
 
@@ -45,13 +43,8 @@ public class Frame {
 		Path path = Paths.get("Student/F" + blockID); //setup the path
 		
 		try {
-			ArrayList<String> lines = (ArrayList<String>) Files.readAllLines(path); //read all of the lines in the file
+			this.content = Files.readAllLines(path).get(0).split("(?<=\\G.{40})");
 			
-			this.content = new String[RECORDS_PER_FRAME];
-			
-			for(int x = 0; x < content.length && x < lines.size(); x++) { //now copy it over
-				this.content[x] = lines.get(x);
-			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -73,9 +66,8 @@ public class Frame {
 				FileWriter writer = new FileWriter("Student/F" + blockID);
 				
 				for(String line : content) {
-					writer.write(line + System.lineSeparator()); //write out each line of the content
+					writer.write(line); //write out each line of the content
 				}
-					
 				writer.close();
 			
 				
@@ -123,8 +115,8 @@ public class Frame {
 	 * @return the requested record or null if invalid
 	 */
 	public String getRecord(int offset) {
-		if(offset < content.length) {
-			return content[offset];
+		if((offset - 1) < content.length && offset > -1) {
+			return content[offset - 1];
 		} 
 		return null;
 	}
@@ -135,8 +127,8 @@ public class Frame {
 	 * @param record the record to be set
 	 */
 	public void setRecord(int offset, String record) {
-		if(offset < content.length) {
-			content[offset] = record;
+		if((offset - 1) < content.length && offset > -1) {
+			content[offset - 1] = record;
 			dirty = true;
 		}
 	}

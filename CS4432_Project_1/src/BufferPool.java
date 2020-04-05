@@ -176,8 +176,8 @@ public class BufferPool {
 		}
 		
 		
-		if(record.startsWith("\"")) record = record.substring(1); //if the input startts with a quote remove it
-		if(record.endsWith("\"")) record = record.substring(0, record.length() - 2); //if the record starts with a quote remove it
+		if(record.startsWith("\"")) record = record.substring(1); //if the input starts with a quote remove it
+		if(record.endsWith("\"")) record = record.substring(0, record.length() - 1); //if the record starts with a quote remove it
 		
 		target.setRecord(offset, record); //set the record
 	}

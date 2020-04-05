@@ -32,19 +32,19 @@ public class CS4432_Project1_lrtrujillo {
 							}
 							
 							
-							if(y < 10) { //formatting things
-								line += "-Rec" + x + "0" + y + ", ";
-								line += "Name" +  x + "0" + y + ", ";
-								line += "address" +  x + "0" + y + ", ";
-								line += "age" +  x + "0" + y + ".";
+							if((y + 1) < 10) { //formatting things
+								line += "-Rec" + x + "0" + (y + 1) + ", ";
+								line += "Name" +  x + "0" + (y + 1) + ", ";
+								line += "address" +  x + "0" + (y + 1) + ", ";
+								line += "age" +  x + "0" + (y + 1) + ".";
 							} else {
-								line += "-Rec" + x + "" + y + ", ";
-								line += "Name" +  x + "" + y + ", ";
-								line += "address" +  x + "" + y + ", ";
-								line += "age" +  x + "" + y + ".";
+								line += "-Rec" + x + "" + (y + 1) + ", ";
+								line += "Name" +  x + "" + (y + 1) + ", ";
+								line += "address" +  x + "" + (y + 1) + ", ";
+								line += "age" +  x + "" + (y + 1) + ".";
 							}
 						
-						fw.write(line + System.lineSeparator());  //make sure to add a line break
+						fw.write(line);  //make sure to add a line break
 					}
 					
 					fw.close();
