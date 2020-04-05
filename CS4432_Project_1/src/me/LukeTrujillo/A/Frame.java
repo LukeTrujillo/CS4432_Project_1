@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Frame {
@@ -31,7 +32,7 @@ public class Frame {
 	}
 	
 	
-	public void load(int blockID) {
+	public Frame load(int blockID) {
 		this.blockID = blockID;
 		this.dirty = false;
 		this.pinned = false;
@@ -39,7 +40,7 @@ public class Frame {
 		this.isEmpty = false;
 		
 		
-		Path path = Paths.get("/Student/F" + blockID);
+		Path path = Paths.get("Student/F" + blockID);
 		
 		try {
 			ArrayList<String> lines = (ArrayList<String>) Files.readAllLines(path);
@@ -53,6 +54,8 @@ public class Frame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		return this;
 	}
 	
 	public boolean evict() {
@@ -61,7 +64,7 @@ public class Frame {
 		
 		if(dirty) { //then we need to write out the block
 			try {
-				FileWriter writer = new FileWriter("/Student/F" + blockID);
+				FileWriter writer = new FileWriter("Student/F" + blockID);
 				
 				for(String line : content) {
 					writer.write(line + System.lineSeparator());
@@ -119,14 +122,14 @@ public class Frame {
 	}
 	
 	public String getRecord(int offset) {
-		if(offset > content.length) {
+		if(offset < content.length) {
 			return content[offset];
 		} 
 		return null;
 	}
 	
 	public void setRecord(int offset, String record) {
-		if(offset > content.length) {
+		if(offset < content.length) {
 			content[offset] = record;
 			dirty = true;
 		}
