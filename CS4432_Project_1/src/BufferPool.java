@@ -1,4 +1,4 @@
-package me.LukeTrujillo.A;
+
 
 public class BufferPool {
 	private Frame contents[];
@@ -31,7 +31,6 @@ public class BufferPool {
 		}
 		return false;
 	}
-
 
 	public boolean isEmptyFramePresent() {
 		for (int x = 0; x < contents.length; x++) {

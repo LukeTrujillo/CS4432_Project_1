@@ -1,11 +1,11 @@
-package me.LukeTrujillo.A;
+
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {
+public class CS4432_Project1_lrtrujillo {
 
 	public static void main(String args[]) {
 
@@ -59,7 +59,14 @@ public class Main {
 			}
 		}
 		
-		BufferPool manager = new BufferPool(Integer.parseInt(args[1]));
+		if(args.length != 1) {
+			System.out.println("A numeric argument must be supplied to specify the number of frames. Please try again.");
+			return;
+		}
+		
+		BufferPool manager = new BufferPool(Integer.parseInt(args[0]));
+		
+		System.out.println("Ready for input...");
 		
 		Scanner scanner = new Scanner(System.in); // get the text input
 
