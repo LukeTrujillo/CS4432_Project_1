@@ -11,6 +11,10 @@ public class Main {
 
 		File student_table = new File("Student");
 
+		if(student_table.exists()) {
+			student_table.delete();
+		}
+		
 		if (!student_table.exists()) {
 			student_table.mkdir();
 
@@ -23,19 +27,28 @@ public class Main {
 					
 					for(int y = 0; y < 100; y++) {
 						
-						String line = "F";
+							String line = "F";
+							
+							if((x + 1) < 10) {
+								line += "0" + (x + 1);
+							} else {
+								line += (x + 1);
+							}
+							
+							
+							if(y < 10) {
+								line += "-Rec" + x + "0" + y + ", ";
+								line += "Name" +  x + "0" + y + ", ";
+								line += "address" +  x + "0" + y + ", ";
+								line += "age" +  x + "0" + y + ".";
+							} else {
+								line += "-Rec" + x + "" + y + ", ";
+								line += "Name" +  x + "" + y + ", ";
+								line += "address" +  x + "" + y + ", ";
+								line += "age" +  x + "" + y + ".";
+							}
 						
-						if((x + 1) < 10) {
-							line += "0" + (x + 1);
-						} else {
-							line += (x + 1);
-						}
-						
-						line += "-Rec" + (x + 1) + "" + (y + 1) + ",";
-						line += "-Rec" + (x + 1) + "" + (y + 1) + ",";
-						
-						
-						fw.write();
+						fw.write(line + System.lineSeparator());
 					}
 					
 					fw.close();
@@ -56,6 +69,7 @@ public class Main {
 		System.out.println("Ready for input");
 		while (true) {
 			try {
+				System.out.println();
 				String text = scanner.nextLine();
 
 				String input[] = text.split(" ", 3);
@@ -87,6 +101,6 @@ public class Main {
 				System.out.println("Invalid number argument given");
 			}
 		}
-
+		
 	}
 }

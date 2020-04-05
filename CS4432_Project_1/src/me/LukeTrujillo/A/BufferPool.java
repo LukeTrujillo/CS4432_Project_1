@@ -96,7 +96,7 @@ public class BufferPool {
 
 			System.out.println(
 					"Output: " + target.getRecord(offset) + "; Bought File " + blockID + " from disk; Placed in Frame "
-							+ (index + 1) + "; Evicted file " + evictID + "from Frame " + (index + 1));
+							+ (index + 1) + "; Evicted file " + evictID + " from Frame " + (index + 1));
 
 		} else if (!isAlreadyLoadedInMemory(blockID) && !isEmptyFramePresent() && !evictableFramePresent()) { // case 4
 			System.out.println("The corresponding block #" + blockID
@@ -138,7 +138,7 @@ public class BufferPool {
 
 			System.out.println(
 					"Output: Write was successful; Bought File " + blockID + " from disk; Placed in Frame "
-							+ (index + 1) + "; Evicted file " + evictID + "from Frame " + (index + 1));
+							+ (index + 1) + "; Evicted file " + evictID + " from Frame " + (index + 1));
 			
 		} else if (!isAlreadyLoadedInMemory(blockID) && !isEmptyFramePresent() && !evictableFramePresent()) { // case 4
 			System.out.println("The corresponding block #" + blockID
@@ -172,8 +172,8 @@ public class BufferPool {
 	}
 
 	public void pin(int recordID) {
-		int blockID = recordID / Frame.RECORDS_PER_FRAME;
-		int offset = recordID % Frame.RECORDS_PER_FRAME;
+		int blockID = recordID;
+	
 
 		Frame target = null;
 		String pinStatus = "";
@@ -214,7 +214,7 @@ public class BufferPool {
 
 
 			System.out.println(
-					"Output: File " + blockID + " pinned in Frame " + (index + 1) + "; " + pinStatus + "; Evicted file " + evictID + "from Frame " + (index + 1));
+					"Output: File " + blockID + " pinned in Frame " + (index + 1) + "; " + pinStatus + "; Evicted file " + evictID + " from Frame " + (index + 1));
 			
 		} else if (!isAlreadyLoadedInMemory(blockID) && !isEmptyFramePresent() && !evictableFramePresent()) { // case 4
 			System.out.println("The corresponding block #" + blockID
@@ -226,7 +226,7 @@ public class BufferPool {
 	}
 
 	public void unpin(int recordID) {
-		int blockID = recordID / Frame.RECORDS_PER_FRAME;
+		int blockID = recordID;
 
 		Frame target = null;
 		String pinStatus = "";
@@ -235,14 +235,14 @@ public class BufferPool {
 			int frameIndex = getLoadedBlockFrameIndex(blockID);
 			target = contents[frameIndex];
 
-			if(target.isPinned()) pinStatus = "Already pinned";
-			else pinStatus = "Not already pinned";
+			if(target.isPinned()) pinStatus = "Frame was already pinned";
+			else pinStatus = "Frame was not already unpinned";
 			
 			System.out.println("Output: File " + blockID + " in Frame "
 					+ (frameIndex + 1) + " is unpinned; " + pinStatus);
 
 		}  else {
-			System.out.println("The corresponding block #" + blockID
+			System.out.println("The corresponding block " + blockID
 					+ " cannot be unpinned because it is not in memory");
 			return;
 		}

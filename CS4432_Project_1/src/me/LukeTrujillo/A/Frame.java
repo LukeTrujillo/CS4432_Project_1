@@ -25,10 +25,7 @@ public class Frame {
 		this.dirty = false;
 		this.pinned = false;
 		this.content = new String[RECORDS_PER_FRAME];
-		
 		this.isEmpty = true;
-		
-	
 	}
 	
 	
