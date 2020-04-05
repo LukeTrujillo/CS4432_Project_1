@@ -278,18 +278,17 @@ public class BufferPool {
 			int frameIndex = getLoadedBlockFrameIndex(blockID);
 			target = contents[frameIndex];
 
-			if(target.isPinned()) pinStatus = "Frame was already pinned";
-			else pinStatus = "Frame was not already unpinned";
+			if(target.isPinned()) pinStatus = "Frame " + (frameIndex + 1) + " was not already unpinned";
+			else pinStatus = "Frame was already unpinned";
 			
-			System.out.println("Output: File " + blockID + " in Frame "
-					+ (frameIndex + 1) + " is unpinned; " + pinStatus);
+			System.out.println("Output: File " + blockID + " is unpinned in Frame "
+					+ (frameIndex + 1) + "; " + pinStatus);
 
 		}  else { //or you are trying to unpinn something not in memory so we cant do it
 			System.out.println("The corresponding block " + blockID
 					+ " cannot be unpinned because it is not in memory");
 			return;
 		}
-		
 		target.setPinned(false); //set it as unpinned.
 	}
 
