@@ -40,7 +40,7 @@ public class Frame {
 		this.isEmpty = false;
 		
 		
-		Path path = Paths.get("Student/F" + blockID); //setup the path
+		Path path = Paths.get("Student/F" + blockID + ".txt"); //setup the path
 		
 		try {
 			this.content = Files.readAllLines(path).get(0).split("(?<=\\G.{40})");
@@ -63,7 +63,7 @@ public class Frame {
 		
 		if(dirty) { //then we need to write out the block
 			try {
-				FileWriter writer = new FileWriter("Student/F" + blockID);
+				FileWriter writer = new FileWriter("Student/F" + blockID + ".txt");
 				
 				for(String line : content) {
 					writer.write(line); //write out each line of the content

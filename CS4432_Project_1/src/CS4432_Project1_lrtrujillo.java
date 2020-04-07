@@ -14,9 +14,9 @@ public class CS4432_Project1_lrtrujillo {
 		if (!student_table.exists()) { //if the files arent set
 			student_table.mkdir(); //make the dir
 
-			for (int x = 0; x < 300; x++) { //and generate the files
+			for (int x = 0; x < 10; x++) { //and generate the files
 				try {
-					File file = new File("Student/F" + (x + 1));
+					File file = new File("Student/F" + (x + 1) + ".txt");
 					file.createNewFile();
 					
 					FileWriter fw = new FileWriter(file);

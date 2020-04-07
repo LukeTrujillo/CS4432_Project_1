@@ -21,7 +21,8 @@ Section 3: Design Decisions
 	
 	Project guidelines were unclear if we needed to generate the files in the Student 
 	directory ourselves or if we assume they are there. If there is no local directory
-	called Student my program will generate it and store files accordingly.
+	called Student my program will generate it and store files accordingly. I will generate 10 files
+	with 100 records each. (F1.txt - F10.txt). 
 	
 	I adhered to the project's suggest structure using a BufferPool and a Frame class. In
 	the Frame class, I added the variable isEmpty to make a distinction between a recently 
